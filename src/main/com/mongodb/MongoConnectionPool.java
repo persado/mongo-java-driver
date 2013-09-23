@@ -22,7 +22,16 @@ package com.mongodb;
  */
 class MongoConnectionPool extends DBPortPool implements MongoConnectionPoolMXBean {
 
+	static final int BUFFERSIZE = Integer.valueOf(System.getProperty("mongodb.buffersize", "8192"));
+	
     MongoConnectionPool(ServerAddress addr, MongoOptions options) {
         super(addr, options);
+    	Bytes.LOGGER.warning("ConnectionPool configured with "+BUFFERSIZE+" bytes, change with -Dmongodb.buffersize" );
+
     }
+
+	@Override
+	public int getConfiguredBufferSize() {
+		return BUFFERSIZE;
+	}
 }

@@ -59,4 +59,9 @@ public interface MongoConnectionPoolMXBean {
      * @return the connection pool statistics
      */
     ConnectionPoolStatisticsBean getStatistics();
+
+    /**
+     * returns the currently active buffer size for buffered input streams
+     */
+    int getConfiguredBufferSize();
 }

@@ -223,7 +223,7 @@ public class DBPort {
                 _socket.setTcpNoDelay( ! USE_NAGLE );
                 _socket.setKeepAlive( _options.socketKeepAlive );
                 _socket.setSoTimeout( _options.socketTimeout );
-                _in = new BufferedInputStream( _socket.getInputStream() );
+                _in = new BufferedInputStream( _socket.getInputStream(), MongoConnectionPool.BUFFERSIZE );
                 _out = _socket.getOutputStream();
                 successfullyConnected = true;
             }
